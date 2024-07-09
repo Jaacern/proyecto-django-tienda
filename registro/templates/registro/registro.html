@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Registro{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Registro</h1>
+    <div class="jumbotron">
+        {% if user.is_authenticated %}
+            <h2 class="text-center">Ya se encuentra registrado</h2>
+        {% else %}
+            <form action="" method="POST" target="_self">{% csrf_token %}
+                {% for field in form %}
+                <div class="form-group row">
+                    <label for="{{ field.id_for_label }}" class="col-sm-2 col-form-label">{{ field.label }}</label>
+                    <div class="col-sm-10">
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="invalid-feedback">
+                                {% for error in field.errors %}
+                                    <span>{{ error }}</span><br>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if field.help_text %}
+                            <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                <button class="btn btn-primary btn-block" type="submit">Completar</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

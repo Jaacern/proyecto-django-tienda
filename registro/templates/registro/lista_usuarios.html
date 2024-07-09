@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="mb-0">Lista de Usuarios</h1>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% for usuario in usuarios %}
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-0">{{ usuario.username }}</h5>
+                            <p class="mb-1">{{ usuario.first_name }} {{ usuario.last_name }}</p>
+                            <p class="mb-1">{{ usuario.email }}</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-info btn-sm mx-1">Editar</a>
+                            <a href="{% url 'eliminar_usuario' usuario.id %}" class="btn btn-danger btn-sm mx-1">Eliminar</a>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{% url 'crear_usuario' %}" class="btn btn-primary">Crear Nuevo Usuario</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

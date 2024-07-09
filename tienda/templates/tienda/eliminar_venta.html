@@ -1,0 +1,11 @@
+<!-- eliminar_venta.html -->
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Eliminar Venta</h2>
+  <p>¿Estás seguro que deseas eliminar la venta {{ venta.id }} - {{ venta.producto.nombre }}?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar Eliminar</button>
+    <a href="{% url 'listar_ventas' %}">Cancelar</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 text-center">
+            <div class="presentacion rounded">
+               <h1>Servicios de Mantencion y Reparacion para tu bicicleta.</h1>
+                <br>
+                <h3>High Performance</h3>
+                <hr class="my-4">
+                <p>Contactanos !</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" 
+            src="{% static 'inicio/img/principal2.png' %}" 
+            alt="">
+        </div>  
+    </div>
+    <br>
+    <br>
+    <h1 class="text-center" style="color: white;">NUESTROS SERVICIOS</h1>
+    <br>
+    <div class="carrusel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="text-center">
+                  <img src="{{ mas_vendidos.0.imagen_prd.url }}" class="img-fluid" alt="responsive image">
+                </div>
+                
+                <div class="carousel-caption d-md-block">
+                  <h2 class="carousel-text">{{ mas_vendidos.0.nombre_prd }}</h2>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="text-center">
+                  <img src="{{ mas_vendidos.1.imagen_prd.url }}" class="img-fluid" alt="responsive image">
+                </div>
+                
+                <div class="carousel-caption d-md-block">
+                  <h2 class="carousel-text">{{ mas_vendidos.1.nombre_prd }}</h2>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="text-center">
+                  <img src="{{ mas_vendidos.2.imagen_prd.url }}" class="img-fluid" alt="...">
+                </div>
+                
+                <div class="carousel-caption d-md-block">
+                  <h2 class="carousel-text">{{ mas_vendidos.2.nombre_prd }}</h2>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="text-center">
+                  <img src="{{ mas_vendidos.3.imagen_prd.url }}" class="img-fluid" alt="responsive image">
+                </div>
+                
+                <div class="carousel-caption d-md-block">
+                  <h2 class="carousel-text">{{ mas_vendidos.3.nombre_prd }}</h2>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Siguiente</span>
+            </a>
+          </div>
+    </div>
+
+</div>
+
+{% endblock %}

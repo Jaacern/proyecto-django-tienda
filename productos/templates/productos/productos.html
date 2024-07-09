@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center" style= "color: white;">PRODUCTOS</h1>
+</div>
+<br>
+<div class="container barrafiltro">
+  <ul class="nav justify-content-center">
+    <li>
+      <form class="form-inline" type="get" action="." style="margin: 0">
+        <label style="padding-right:0.3cm;" for="">BUSQUEDA DE PRODUCTO</label>
+        <input class="form-control mr-sm-2" id="search_box" type="search" name="search_box" placeholder="Ej: Mantencion" >
+        <button id="search_submit" type="submit" class="btn btn-outline-success my-2 my-sm-0" >Buscar</button>
+      </form>
+    </li>
+    <form class="form-inline" type="get" action="." style="margin: 0">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color: white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ORDENAR</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/productos/1/">Precio</a>
+          <a class="dropdown-item" href="/productos/2/">Categoria</a>
+          <a class="dropdown-item" href="/productos/3/">Mas Vendidos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/productos/0/">Restaurar orden</a>
+        </div>
+      </li>
+    </form>
+  </ul>
+</div>
+{% if not user.is_authenticated %}
+  <div class="container text-center" style="padding: 0px;">
+    <div class="alert alert-primary" role="alert">
+      Recuerda <a href="{% url 'Register' %}" class="alert-link">registrarte</a> para obtener un 10% de descuento en tu primera compra.
+    </div>
+  </div>
+{% endif %}
+
+
+
+<br>
+
+<div class="container">
+{% for producto in productos %}
+  {% if forloop.first %}
+    <div class="row">
+  {% endif %}
+        <div class="col-md-3 mb-2">
+          <!-- Tarjeta Producto -->
+          {% include "productos/tarjeta_producto.html" %}
+        </div>
+        {% if forloop.counter|divisibleby:4 %}</div><div class="row">{% endif %}
+          {% if forloop.last %}</div>{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+ELIMINAR USUSARIO
+
+
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Usuario</title>
+</head>
+<body>
+    <h1>Eliminar Usuario</h1>
+    <p>¿Estás seguro de que quieres eliminar a {{ usuario.username }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar Usuario</button>
+    </form>
+    <a href="{% url 'lista_usuarios' %}">Volver a la lista de usuarios</a>
+</body>
+</html>
+
+{% endblock %}

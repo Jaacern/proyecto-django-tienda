@@ -1,0 +1,17 @@
+<!-- tienda/confirmar_eliminar_venta.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar Eliminar Venta</title>
+</head>
+<body>
+    <h1>Confirmar Eliminar Venta</h1>
+    <p>¿Estás seguro de que deseas eliminar la venta de {{ venta.producto }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Eliminar Venta</button>
+        <a href="{% url 'listar_ventas' %}">Cancelar</a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="mb-0">Lista de Productos</h1>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">Crear Nuevo Producto</a>
+
+            <ul class="list-group">
+                {% for producto in productos %}
+                <li class="list-group-item">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-0">{{ producto.nombre_prd }}</h5>
+                            <p class="mb-1">Precio: {{ producto.precio }}</p>
+                            <p class="mb-1">Categoría: {{ producto.id_categoria }}</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img src="{{ producto.imagen_prd.url }}" alt="{{ producto.nombre_prd }}" class="img-thumbnail" style="max-width: 100px;">
+                        </div>
+                    </div>
+                    <div class="text-center mt-2">
+                        <a href="{% url 'editar_producto' producto.id %}" class="btn btn-info btn-sm mx-1">Editar</a>
+                        <a href="{% url 'eliminar_producto' producto.id %}" class="btn btn-danger btn-sm mx-1">Eliminar</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

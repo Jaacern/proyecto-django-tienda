@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white text-center">
+            <h1 class="mb-0">Editar Usuario</h1>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{% url 'lista_usuarios' %}" class="btn btn-secondary mt-3">Volver a la lista de usuarios</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
